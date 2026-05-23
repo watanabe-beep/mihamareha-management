@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美浜リハビリテーション部　マネジメント体制　改善提案</title>
+<style>
+  :root {
+    --green: #0F6E56; --green-l: #E1F5EE;
+    --blue: #185FA5; --blue-l: #E6F1FB;
+    --teal: #0E7490; --teal-l: #E0F7FA;
+    --amber: #854F0B; --amber-l: #FAEEDA;
+    --red: #993556; --red-l: #FBEAF0;
+    --purple: #534AB7; --purple-l: #EEEDFE;
+    --forest: #3B6D11; --forest-l: #EAF3DE;
+    --coral: #B94A2C; --coral-l: #FDECEA;
+    --dark: #1A1A1A; --mid: #555; --light: #888;
+    --border: #ddd; --bg: #f9f9f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Arial', sans-serif; font-size: 13px; color: var(--dark); background: #eee; }
+  .page { background: white; max-width: 1150px; margin: 24px auto; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,.1); border-radius: 4px; }
+
+  .doc-header { border-bottom: 3px solid var(--green); padding-bottom: 8px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .doc-header-title { font-size: 13px; font-weight: bold; color: var(--green); }
+  .doc-header-date { font-size: 12px; color: var(--light); }
+
+  .title-block { text-align: center; margin-bottom: 20px; }
+  .title-main { font-size: 26px; font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+  .title-sub { font-size: 15px; color: var(--green); }
+
+  .purpose-box { background: var(--green-l); border: 1px solid var(--green); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; color: var(--green); line-height: 1.7; }
+
+  /* WHY box */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .why-card { border-radius: 6px; padding: 12px 14px; border: 1px solid; }
+  .why-irregular { background: var(--coral-l); border-color: var(--coral); }
+  .why-regular { background: var(--green-l); border-color: var(--green); }
+  .why-title { font-size: 13px; font-weight: bold; margin-bottom: 6px; }
+  .why-irregular .why-title { color: var(--coral); }
+  .why-regular .why-title { color: var(--green); }
+  .why-body { font-size: 12px; line-height: 1.7; }
+  .why-irregular .why-body { color: var(--coral); }
+  .why-regular .why-body { color: var(--green); }
+
+  .member-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 24px; }
+  .member-card { border-radius: 6px; padding: 8px 10px; text-align: center; border: 1px solid; }
+  .member-name { font-size: 12px; font-weight: bold; margin-bottom: 3px; }
+  .member-role { font-size: 10px; line-height: 1.4; }
+  .mc-blue { background: var(--blue-l); border-color: var(--blue); color: var(--blue); }
+  .mc-teal { background: var(--teal-l); border-color: var(--teal); color: var(--teal); }
+  .mc-green { background: var(--green-l); border-color: var(--green); color: var(--green); }
+  .mc-red { background: var(--red-l); border-color: var(--red); color: var(--red); }
+  .mc-forest { background: var(--forest-l); border-color: var(--forest); color: var(--forest); }
+  .mc-purple { background: var(--purple-l); border-color: var(--purple); color: var(--purple); }
+
+  .progress-bar { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--mid); }
+  .progress-num { font-size: 20px; font-weight: bold; color: var(--green); }
+
+  .section { margin-bottom: 36px; }
+  .section-title { font-size: 17px; font-weight: bold; color: var(--green); border-bottom: 3px solid var(--green); padding-bottom: 6px; margin-bottom: 10px; }
+  .section-desc { font-size: 12px; color: var(--mid); margin-bottom: 10px; line-height: 1.6; }
+
+  .block-label { border-radius: 4px; padding: 7px 12px; margin-bottom: 8px; font-size: 13px; font-weight: bold; border: 1px solid; }
+  .bl-blue { background: var(--blue-l); border-color: var(--blue); color: var(--blue); }
+  .bl-teal { background: var(--teal-l); border-color: var(--teal); color: var(--teal); }
+  .bl-green { background: var(--green-l); border-color: var(--green); color: var(--green); }
+  .bl-coral { background: var(--coral-l); border-color: var(--coral); color: var(--coral); }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 11px; }
+  th { padding: 7px 8px; text-align: center; font-weight: bold; color: white; font-size: 11px; }
+  td { padding: 6px 8px; border: 1px solid var(--border); vertical-align: middle; line-height: 1.5; }
+  tr:nth-child(even) td { background: var(--bg); }
+  tr:nth-child(even) td select { background: var(--bg); }
+
+  .th-blue { background: var(--blue); }
+  .th-teal { background: var(--teal); }
+  .th-green { background: var(--green); }
+  .th-dark { background: var(--dark); }
+  .th-coral { background: var(--coral); }
+
+  .td-cat { font-weight: bold; font-size: 11px; background: var(--bg) !important; color: var(--mid); width: 10%; }
+  .td-task { width: 20%; font-size: 11px; }
+  .td-freq { width: 8%; text-align: center; font-size: 10px; color: var(--mid); }
+  .td-select { width: 11%; text-align: center; }
+  .td-eff { width: 28%; color: var(--mid); font-size: 11px; }
+  .td-note { width: 12%; font-size: 10px; color: var(--mid); }
+
+  .tag-irregular { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 10px; background: var(--coral-l); color: var(--coral); border: 1px solid var(--coral); margin-left: 4px; }
+  .tag-merge { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 10px; background: var(--amber-l); color: var(--amber); border: 1px solid var(--amber); margin-left: 4px; }
+
+  select {
+    width: 100%; padding: 3px 18px 3px 5px; border: 1px solid var(--border);
+    border-radius: 4px; font-size: 10px; color: var(--dark); background: white;
+    cursor: pointer; appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath fill='%23888' d='M0 0l4 5 4-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 5px center;
+  }
+  select:focus { outline: 2px solid var(--green); border-color: var(--green); }
+  select.sel-blue { border-color: var(--blue); background-color: var(--blue-l); color: var(--blue); font-weight: bold; }
+  select.sel-teal { border-color: var(--teal); background-color: var(--teal-l); color: var(--teal); font-weight: bold; }
+  select.sel-green { border-color: var(--green); background-color: var(--green-l); color: var(--green); font-weight: bold; }
+  select.sel-red { border-color: var(--red); background-color: var(--red-l); color: var(--red); font-weight: bold; }
+  select.sel-forest { border-color: var(--forest); background-color: var(--forest-l); color: var(--forest); font-weight: bold; }
+  select.sel-purple { border-color: var(--purple); background-color: var(--purple-l); color: var(--purple); font-weight: bold; }
+  select.sel-ai { border-color: var(--purple); background-color: var(--purple-l); color: var(--purple); font-weight: bold; }
+  select.sel-delete { border-color: #999; background-color: #f0f0f0; color: #888; font-weight: bold; }
+  select.sel-custom { border-color: var(--amber); background-color: var(--amber-l); color: var(--amber); font-weight: bold; }
+  tr.row-deleted td { opacity: 0.4; }
+  tr.row-deleted { background: #f8f8f8; }
+  .tag-deleted { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 10px; background: #eee; color: #999; border: 1px solid #ccc; margin-left: 4px; text-decoration: line-through; }
+  .custom-wrap { position: relative; }
+  .custom-input { display: none; width: 100%; margin-top: 3px; padding: 3px 5px; border: 1px solid var(--amber); border-radius: 4px; font-size: 10px; color: var(--amber); background: var(--amber-l); }
+  .custom-input::placeholder { color: #c8973a; }
+  .member-counter-card { border-radius:6px;padding:8px 12px;border:1px solid;text-align:center;min-width:90px; }
+  .mc-num { font-size:22px;font-weight:bold;margin-bottom:2px; }
+  .mc-name { font-size:11px;font-weight:bold; }
+  .mc-sub { font-size:10px;margin-top:2px; }
+  .summary-person-block { margin-bottom:14px;border:1px solid var(--border);border-radius:6px;overflow:hidden; }
+  .summary-person-header { padding:7px 12px;font-size:13px;font-weight:bold;border-bottom:1px solid var(--border); }
+  .summary-task-list { padding:8px 12px; }
+  .summary-task-item { font-size:11px;color:var(--mid);padding:3px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:8px; }
+  .summary-task-item:last-child { border-bottom:none; }
+  .summary-task-cat { font-size:10px;color:#aaa;min-width:70px; }
+  .deleted-item { display:inline-block;font-size:11px;padding:3px 10px;border-radius:12px;background:#eee;color:#888;border:1px solid #ccc;margin:3px 4px;text-decoration:line-through; }
+
+  .note-box { border-radius: 4px; padding: 8px 12px; font-size: 11px; line-height: 1.6; border: 1px solid; margin-bottom: 14px; }
+  .nb-blue { background: var(--blue-l); border-color: var(--blue); color: var(--blue); }
+  .nb-teal { background: var(--teal-l); border-color: var(--teal); color: var(--teal); }
+  .nb-green { background: var(--green-l); border-color: var(--green); color: var(--green); }
+  .nb-coral { background: var(--coral-l); border-color: var(--coral); color: var(--coral); }
+  .nb-amber { background: var(--amber-l); border-color: var(--amber); color: var(--amber); }
+
+  .td-period { text-align: center; font-weight: bold; font-size: 11px; width: 10%; }
+  .td-action { width: 18%; font-weight: bold; font-size: 11px; }
+  .td-content { width: 45%; color: var(--mid); font-size: 11px; }
+  .td-who { width: 27%; font-size: 11px; color: var(--mid); }
+  .period-green { background: var(--green-l); color: var(--green); }
+  .period-blue { background: var(--blue-l); color: var(--blue); }
+  .period-amber { background: var(--amber-l); color: var(--amber); }
+
+  .final-box { background: var(--green-l); border: 1px solid var(--green); border-radius: 6px; padding: 16px; text-align: center; margin-top: 20px; }
+  .final-box p { color: var(--green); font-size: 13px; line-height: 1.8; }
+  .final-box strong { font-size: 14px; }
+
+  .page-break { border-top: 2px dashed #ccc; margin: 28px 0 8px; }
+  .page-break-label { font-size: 10px; color: #bbb; text-align: center; margin-bottom: 14px; }
+
+  .legend-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mid); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-header-title">美浜リハビリテーション部　マネジメント体制　改善提案</div>
+    <div class="doc-header-date">2026年5月　渡部泰斗</div>
+  </div>
+
+  <div class="title-block">
+    <div class="title-main">美浜リハビリテーション部　マネジメント体制　改善提案</div>
+    <div class="title-sub">役割分担の明文化と業務効率化ロードマップ</div>
+  </div>
+
+  <div class="purpose-box">
+    <strong>目的：</strong>マネジメントメンバーそれぞれの役割を明確にし、監視・確認業務をAI・ツールに委譲することで、主任が「判断・承認」に、副主任が「実働・設計」に集中できる体制をつくる
+  </div>
+
+  <!-- WHY -->
+  <!-- 現状の業務量 -->
+  <div style="background:var(--red-l);border:1px solid var(--red);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-size:36px;font-weight:bold;color:var(--red);">53</div>
+      <div style="font-size:11px;color:var(--red);">現状の管理職業務数</div>
+    </div>
+    <div style="font-size:12px;color:var(--red);line-height:1.9;flex:1;">
+      <strong>4名で53項目を分担している現状。</strong><br>
+      うち日次業務だけで約20項目。臨床業務（プレイヤー）をこなしながら回している構造は<strong>物理的に限界</strong>に近い。<br>
+      残業・休日対応が常態化しているのは、個人の努力不足ではなく<strong>設計の問題</strong>である。
+    </div>
+    <div style="text-align:center;border-left:1px solid var(--red);padding-left:20px;">
+      <div style="font-size:11px;color:var(--red);margin-bottom:4px;">理想的な管理職の</div>
+      <div style="font-size:11px;color:var(--red);margin-bottom:4px;">直接管理業務数</div>
+      <div style="font-size:28px;font-weight:bold;color:var(--green);">10〜15</div>
+      <div style="font-size:10px;color:var(--mid);">項目程度が適正水準</div>
+    </div>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card why-irregular">
+      <div class="why-title">⚡ イレギュラー対応（削除不可・必ず発生する）</div>
+      <div class="why-body">
+        遅刻・欠勤・急変対応・クレーム・悪天候時の空き枠対応など、予測できない事案が日々発生し、ここで時間が溶けているのが現実。<br>
+        <strong>これは削除できない。発生を前提に受け入れる。</strong>
+      </div>
+    </div>
+    <div class="why-card why-regular">
+      <div class="why-title">✅ レギュラー対応（効率化・委譲・自動化できる）</div>
+      <div class="why-body">
+        定常的なルーティン業務こそ、役割分担・AI・ツール活用で最小の時間・最大の効果に設計できる。<br>
+        <strong>イレギュラーに対応できる余白を、ここから生み出す。</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Members -->
+  <div class="member-grid">
+    <div class="member-card mc-blue"><div class="member-name">大出（主任）</div><div class="member-role">品質・評価・現場判断</div></div>
+    <div class="member-card mc-teal"><div class="member-name">石垣（主任）</div><div class="member-role">数値・量的管理・スタッフ対応</div></div>
+    <div class="member-card mc-green"><div class="member-name">渡部（副主任）</div><div class="member-role">設計・仕組み化</div></div>
+    <div class="member-card mc-red"><div class="member-name">鈴木（副主任）</div><div class="member-role">ルール遵守・確実実行</div></div>
+    <div class="member-card mc-forest"><div class="member-name">工藤（スタッフ）</div><div class="member-role">人事・対外系サポート</div></div>
+    <div class="member-card mc-purple"><div class="member-name">杉田（リーダー）</div><div class="member-role">現場実行</div></div>
+  </div>
+
+  <!-- 進捗サマリー -->
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px;flex-wrap:wrap;">
+      <div><span class="progress-num" id="filled-count">0</span><span style="font-size:12px;color:var(--mid);"> / </span><span id="total-count" style="font-size:14px;font-weight:bold;color:var(--mid);">0</span><span style="font-size:11px;color:var(--light);margin-left:4px;">項目決定済み</span></div>
+      <div style="font-size:11px;color:var(--light);">│　プルダウンから選んでみんなで埋めていきましょう</div>
+      <div style="font-size:11px;color:#999;font-weight:bold;" id="deleted-count"></div>
+    </div>
+    <!-- 担当者別タスク数 -->
+    <div style="font-size:11px;font-weight:bold;color:var(--mid);margin-bottom:8px;">担当者別　業務数（主担当のみカウント）</div>
+    <div id="member-counters" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+  </div>
+
+  <div class="legend-row">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--coral-l);border:1px solid var(--coral);"></div><span style="color:var(--coral);">イレギュラー対応（削除不可）</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber-l);border:1px solid var(--amber);"></div><span style="color:var(--amber);">統合検討（話し合いで整理できる可能性あり）</span></div>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― ① 主任共通業務 ―</div></div>
+
+  <!-- Block 1 固定 -->
+  <div class="section">
+    <div class="section-title">① 主任共通業務　大出・石垣が共同で担う核心的タスク</div>
+    <div class="section-desc">決裁・最終判断は主任のみ。ただし資料作成・集計・分析は渡部＋AI・ツールでサポートし、主任の判断コストを最小化する。</div>
+    <div class="block-label bl-blue">主任2名共同（大出・石垣）　※この欄は固定</div>
+    <table id="block1-table">
+      <thead><tr>
+        <th class="th-blue" style="width:10%">カテゴリ</th>
+        <th class="th-blue" style="width:25%">業務内容</th>
+        <th class="th-blue" style="width:8%">頻度</th>
+        <th class="th-blue" style="width:11%">主体</th>
+        <th class="th-blue" style="width:11%">サポート</th>
+        <th class="th-blue" style="width:35%">効率化・改善の方向（提案・要相談）</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="td-cat" rowspan="1">人事管理</td><td>スタッフ個人面談・自己評価（必須）</td><td class="td-freq">半期・年</td><td style="text-align:center;font-weight:bold;color:var(--blue)">大出・石垣</td><td id="b1-sup-0" style="text-align:center;"></td><td class="td-eff">例：面談シートのフォーマット化や事前準備の効率化など、AI等で簡略化できるタスクがないか要相談・検討</td></tr>
+        <tr><td class="td-cat" rowspan="2">組織管理</td><td>課長への決裁・報告</td><td class="td-freq">随時</td><td style="text-align:center;font-weight:bold;color:var(--blue)">大出・石垣</td><td id="b1-sup-1" style="text-align:center;"></td><td class="td-eff">例：報告資料の作成・整理など、AI等で自動化・簡略化できるタスクがないか要相談・検討</td></tr>
+        <tr><td>RH運営会議の出席・情報共有</td><td class="td-freq">月・四半期</td><td style="text-align:center;font-weight:bold;color:var(--blue)">大出・石垣</td><td id="b1-sup-2" style="text-align:center;"></td><td class="td-eff">例：議事録・報告整理など、AI等で自動化・簡略化できるタスクがないか要相談・検討</td></tr>
+        <tr><td class="td-cat">量的・法務管理</td><td>数値管理・最終判断・年間目標達成度FB</td><td class="td-freq">月・四半期</td><td style="text-align:center;font-weight:bold;color:var(--blue)">大出・石垣</td><td id="b1-sup-3" style="text-align:center;"></td><td class="td-eff">例：集計・分析・レポート作成など、AI等で自動化・簡略化できるタスクがないか要相談・検討</td></tr>
+      </tbody>
+    </table>
+    <button onclick="addBlock1Row()" style="margin-top:10px;padding:7px 16px;font-size:12px;border:1px solid var(--blue);border-radius:6px;background:var(--blue-l);color:var(--blue);cursor:pointer;font-weight:bold;">＋ 業務を追加する</button>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― ② 主任分担業務（全業務網羅） ―</div></div>
+
+  <!-- Block 2 プルダウン -->
+  <div class="section">
+    <div class="section-title">② 管理職分担業務　元資料の全業務を網羅した一覧</div>
+    <div class="section-desc">元の管理職業務リストを全て掲載。主担当・サポート・将来の委譲先をみんなで決めていきましょう。<span style="color:var(--amber)">🔶統合検討</span>は「まとめられるのでは？」という話し合いの起点です。</div>
+    <div class="block-label bl-teal">管理職分担業務（みんなで決める）</div>
+    <table>
+      <thead><tr>
+        <th class="th-teal" style="width:9%">カテゴリ</th>
+        <th class="th-teal" style="width:22%">業務内容</th>
+        <th class="th-teal" style="width:7%">頻度</th>
+        <th class="th-teal" style="width:10%">主担当</th>
+        <th class="th-teal" style="width:10%">サポート</th>
+        <th class="th-teal" style="width:30%">効率化・仕組み化の方向</th>
+        <th class="th-teal" style="width:12%">将来の分担先</th>
+      </tr></thead>
+      <tbody id="block2-body"></tbody>
+    </table>
+    <div class="note-box nb-amber">🔶 統合検討の項目は「現状この粒度で存在するが、話し合いでまとめられる可能性がある業務」です。削除ではなく整理・統合の起点として活用してください。</div>
+    <button onclick="addBlock2Row()" style="margin-top:10px;padding:7px 16px;font-size:12px;border:1px solid var(--teal);border-radius:6px;background:var(--teal-l);color:var(--teal);cursor:pointer;font-weight:bold;">＋ 業務を追加する</button>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― ③ イレギュラー対応一覧 ―</div></div>
+
+  <!-- Block 3 イレギュラー固定 -->
+  <div class="section">
+    <div class="section-title">③ イレギュラー対応　削除不可・発生を前提に受け入れる</div>
+    <div class="section-desc">これらは削除できない。だからこそ②のレギュラー対応を効率化して、ここに対応できる余白を生み出す。</div>
+    <div class="block-label bl-coral">イレギュラー対応（随時発生）</div>
+    <table>
+      <thead><tr>
+        <th class="th-coral" style="width:9%">カテゴリ</th>
+        <th class="th-coral" style="width:28%">業務内容</th>
+        <th class="th-coral" style="width:10%">主担当</th>
+        <th class="th-coral" style="width:10%">サポート</th>
+        <th class="th-coral" style="width:43%">対応方針・備考</th>
+      </tr></thead>
+      <tbody id="block3-body"></tbody>
+    </table>
+    <div class="note-box nb-coral">⚡ イレギュラー対応の主担当・サポートもプルダウンで決めていきましょう。対応する人を事前に明確にしておくことで、発生時の混乱を減らせます。</div>
+    <button onclick="addBlock3Row()" style="margin-top:10px;padding:7px 16px;font-size:12px;border:1px solid var(--coral);border-radius:6px;background:var(--coral-l);color:var(--coral);cursor:pointer;font-weight:bold;">＋ イレギュラー対応を追加する</button>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― ④ 副主任・サポート層の業務 ―</div></div>
+
+  <!-- Block 4 副主任 -->
+  <div class="section">
+    <div class="section-title">④ その他業務一覧</div>
+    
+    <table>
+      <thead><tr>
+        <th class="th-green" style="width:22%">業務内容</th>
+        <th class="th-green" style="width:10%">主担当</th>
+        <th class="th-green" style="width:10%">サポート</th>
+        <th class="th-green" style="width:40%">内容・ポイント</th>
+        <th class="th-green" style="width:18%">備考</th>
+      </tr></thead>
+      <tbody id="block4-body"></tbody>
+    </table>
+    <div class="note-box nb-green">※ 大さんは時間的制約を前提とし、明確な担当業務を割り当てる。工藤・杉田は得意分野に絞って依頼し、負担過多にならないよう配慮する。</div>
+    <button onclick="addBlock4Row()" style="margin-top:10px;padding:7px 16px;font-size:12px;border:1px solid var(--green);border-radius:var(--border-radius-md,6px);background:var(--green-l);color:var(--green);cursor:pointer;font-weight:bold;">＋ 業務を追加する</button>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― まとめ表 ―</div></div>
+
+  <!-- まとめ表 -->
+  <div class="section">
+    <div class="section-title">まとめ　誰が何を担当するか・やらないと決めたこと</div>
+    <div class="section-desc">プルダウンの選択内容がリアルタイムで反映されます。</div>
+
+    <!-- 担当者別まとめ -->
+    <div id="summary-by-member" style="margin-bottom:20px;"></div>
+
+    <!-- やらないと決めたこと -->
+    <div class="block-label" style="background:#f0f0f0;border-color:#999;color:#666;margin-top:16px;">🚫 やらないと決めたこと</div>
+    <div id="summary-deleted" style="border:1px solid #ddd;border-radius:6px;padding:12px;background:#fafafa;min-height:40px;">
+      <span style="font-size:12px;color:#bbb;" id="deleted-empty-msg">まだ「やらないと決めた」項目はありません</span>
+    </div>
+  </div>
+
+  <div class="page-break"><div class="page-break-label">― ⑤ 次のアクション ―</div></div>
+
+  <div class="section">
+    <div class="section-title">⑤ 次のアクション</div>
+    <table>
+      <thead><tr>
+        <th class="th-dark td-period">時期</th>
+        <th class="th-dark td-action">アクション</th>
+        <th class="th-dark td-content">内容</th>
+        <th class="th-dark td-who">担当</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="td-period period-green">今週</td><td class="td-action">合意形成の場を設ける</td><td class="td-content">この資料を叩き台として共有。「決定」ではなく「一緒に考えたい」スタンスで提案</td><td class="td-who">渡部（提案）・大出・石垣（判断）</td></tr>
+        <tr><td class="td-period period-green">今週〜来月</td><td class="td-action">一覧を見ながら協議</td><td class="td-content">誰が何をするのか。やらない事は何なのか。効率化出来る部分は何かを決めていく。</td><td class="td-who">全員</td></tr>
+        <tr><td class="td-period period-blue">来月〜</td><td class="td-action">実際に役割毎に動く 仕組みを動かす</td><td class="td-content">役割を明確にすることによるリソースの最適化、仕組み化による余剰時間の捻出</td><td class="td-who">渡部（設計・構築）・各担当者（入力）</td></tr>
+        <tr><td class="td-period period-amber">3ヶ月後</td><td class="td-action">振り返りと更新</td><td class="td-content">機能していない委譲を見直し、この役割分担表を実態に合わせてアップデート</td><td class="td-who">全員</td></tr>
+      </tbody>
+    </table>
+    <div class="final-box">
+      <p><strong>マネジメントメンバーで一緒に考え、一緒に作り上げていくための叩き台です。</strong><br>
+      <span style="font-size:11px">元資料（リハ部　管理職業務一覧）を踏襲した上で、現状の課題と改善の方向性を整理しています。</span></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const members = ['', '大出', '石垣', '渡部', '鈴木', '工藤', '杉田', 'AI・ツール', '未定', '──────', 'やらないと決めた', '自由入力...'];
+const colorMap = { '大出':'blue','石垣':'teal','渡部':'green','鈴木':'red','工藤':'forest','杉田':'purple','AI・ツール':'ai','未定':'','やらないと決めた':'delete','自由入力...':'custom' };
+
+const block2Tasks = [
+  // 人事管理
+  { cat:'人事管理', task:'スタッフの体調把握（欠勤）・前日の個人実績把握', freq:'日次・診療前', eff:'例：本人入力フォームの整備など、AI等で自動化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'人事管理', task:'スタッフの臨床業務観察・服務規程違反指導', freq:'日次・診療中', eff:'例：観察チェックシートの整備・標準化など、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'人事管理', task:'時間外施設利用申請処理', freq:'日次・診療後', eff:'例：申請フォームの整備・自動集計など、AI等で自動化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'人事管理', task:'各チームリーダー状況把握', freq:'週次', eff:'例：週次ボードの活用・可視化など、情報共有を効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'人事管理', task:'1〜3年目育成状況報告', freq:'隔週', eff:'例：進捗報告のフォーマット化・整理など、AI等で簡略化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'人事管理', task:'RH運営会議にて育成状況情報共有', freq:'月次', eff:'例：議事録・報告整理の効率化など、AI等で自動化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'人事管理', task:'スタッフ個人面談（任意）', freq:'四半期', eff:'例：面談シートのフォーマット化など、AI等で簡略化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'人事管理', task:'見学者対応', freq:'随時', eff:'既に工藤に委譲済み。正式に位置づけ継続', note:'', merge:false },
+  // 安全管理
+  { cat:'安全管理', task:'前日のIR/QCレポート確認・勤務体制管理', freq:'日次・診療前', eff:'例：報告フォームの整備・集計の効率化など、AI等で自動化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'安全管理', task:'患者の様子観察・ヒヤリハット場面指摘', freq:'日次・診療中', eff:'例：チェックシートの整備・傾向分析など、AI等で効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'安全管理', task:'スタッフからのIR/QC報告受付・指導', freq:'日次・診療後', eff:'例：報告フォームの標準化など、効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'安全管理', task:'RH運営会議にて人的・環境要因の情報共有と対策', freq:'月次', eff:'例：傾向分析・対策案の整理など、AI等で簡略化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'安全管理', task:'RH運営会議にて振り返りと対策実行', freq:'四半期', eff:'例：振り返り・評価のフォーマット化など、効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  // 労務管理
+  { cat:'労務管理', task:'前日の残業確認・適宜処理', freq:'日次・診療前', eff:'例：残業集計・アラートの自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'労務管理', task:'スタッフ休憩取得促し', freq:'日次・診療中', eff:'例：チェックリスト化など、効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'労務管理', task:'服務規程違反指導', freq:'随時', eff:'例：対応基準・事例のマニュアル化など、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'労務管理', task:'残業・時間外の最終確認', freq:'日次・診療後', eff:'例：集計・レポート作成の自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'労務管理', task:'RH運営会議にて労務状況情報共有', freq:'月次', eff:'例：レポート整形の効率化など、AI等で簡略化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'労務管理', task:'有給取得5日以上の管理', freq:'年', eff:'例：有給取得状況の集計・アラートなど、AI等で自動化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'労務管理', task:'有給希望対応', freq:'随時', eff:'例：申請フォームの整備など、AI等で簡略化できるタスクがないか要相談・検討', note:'', merge:false },
+  // 法務・診療報酬
+  { cat:'法務・診療報酬', task:'個人実績24単位超過の確認＆指導', freq:'日次', eff:'例：超過者が少ない現状での監視方法の見直しなど、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'法務・診療報酬', task:'個人実績108単位超過の確認＆指導', freq:'週次', eff:'例：超過者の自動フラグ・アラートなど、AI等で自動化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'法務・診療報酬', task:'150日超過・自賠労災高頻度患者チェック＆指示', freq:'隔週', eff:'例：対象患者の自動リストアップなど、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'法務・診療報酬', task:'RH運営会議にて診療報酬状況情報共有', freq:'月次', eff:'例：数値の整理・要約など、AI等で簡略化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  // 物品管理
+  { cat:'物品管理', task:'5S確認・環境整備', freq:'日次', eff:'例：チェックリスト化・ルーティン化など、効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'物品管理', task:'故障・不具合の報告・対応相談', freq:'随時', eff:'例：報告フォームの整備・通知の自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  // 量的管理
+  { cat:'量的管理', task:'前日の数・リピート要因把握・2〜3週後予測', freq:'日次・診療前', eff:'例：集計・予測値計算の自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'量的管理', task:'空き枠（未充足・キャンセル）時の業務指示', freq:'日次・診療中', eff:'例：対応フローのマニュアル化など、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'量的管理', task:'集計結果把握・分析と対策', freq:'日次・診療後', eff:'例：集計・傾向分析の自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'量的管理', task:'週平均・2〜3週後の予測と対策', freq:'週次', eff:'例：週平均・予測の自動計算・グラフ化など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'量的管理', task:'シフト作成チェック＆指示', freq:'隔週', eff:'例：シフト作成のフォーマット化・チェックリスト化など、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'量的管理', task:'予約枠作成チェック＆指示・2〜3ヶ月先のシフト調整', freq:'月次', eff:'例：予約枠管理・自動通知など、AI等で効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'量的管理', task:'RH運営会議にて四半期結果と次期見込み報告', freq:'四半期', eff:'例：四半期集計・要約の自動化など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  // 診療業務管理
+  { cat:'診療業務管理', task:'現場への指示と浸透度の評価', freq:'月・四半期', eff:'例：評価シートの整備・集計の効率化など、AI等で簡略化できるタスクがないか要相談・検討', note:'', merge:false },
+  // 組織管理
+  { cat:'組織管理', task:'朝MTG発信・キックオフ・モチベーションアップ', freq:'日次・診療前', eff:'例：前日数値の自動配信・朝MTGの効率化など、AI等で自動化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'組織管理', task:'1階・フロアとの連携・臨床現場の判断と指示', freq:'日次・診療中', eff:'例：報連相フローの明確化・マニュアル化など、効率化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'組織管理', task:'診療外業務推進・管理職間情報共有・目標達成指示', freq:'日次・診療後', eff:'例：週次ボードの活用・情報共有の効率化など、AI等で簡略化できるタスクがないか要相談・検討', note:'統合検討', merge:true },
+  { cat:'組織管理', task:'各月の達成度整理・運営会議報告内容整理', freq:'週次', eff:'例：達成率の自動計算・ハイライト整理など、AI等で効率化できるタスクがないか要相談・検討', note:'', merge:false },
+  { cat:'組織管理', task:'秋に向けた各院新商品開発・質的状況情報共有', freq:'月次', eff:'例：企画立案の役割分担など、効率化できるタスクがないか要相談・検討', note:'', merge:false },
+];
+
+const block3Tasks = [
+  { cat:'人事管理', task:'遅刻・欠勤・災害・交通障害対応', note:'発生時即時対応が必要' },
+  { cat:'安全管理', task:'急変対応・クレーム対応', note:'患者・スタッフ双方の対応含む' },
+  { cat:'量的管理', task:'悪天候等による空き枠多数時の電話連絡等対応指示', note:'天候・災害時に発生' },
+  { cat:'労務管理', task:'突発的な人員不足時のシフト調整', note:'欠勤・体調不良等に起因' },
+  { cat:'診療業務管理', task:'医師からの指摘事項への緊急対応', note:'随時・優先度高' },
+];
+
+const block4Tasks = [
+  { task:'新人育成プロジェクト推進', eff:'ロールプレイ案など成果物を出し続ける' },
+  { task:'DX・AI活用推進', eff:'数値集計・分析・要約の自動化基盤を構築（GAS・Gemini・NotebookLM）' },
+  { task:'マニュアル・手順書作成', eff:'Typeless音声入力→Claude整形→Canva図解化。随時・新人育成に直結' },
+  { task:'見学者対応・採用人事（窓口）', eff:'既に一部委譲済み。正式に位置づけ継続' },
+  { task:'2年目以降のキャリアサポート', eff:'教材作成はAI活用でサポート。藤澤さんの業務分をサポート、工藤・杉田の貢献を正式認定' },
+];
+
+let selects = [];
+
+function makeSelect(id) {
+  const wrap = document.createElement('div');
+  wrap.className = 'custom-wrap';
+
+  const sel = document.createElement('select');
+  sel.id = id;
+
+  const customInput = document.createElement('input');
+  customInput.type = 'text';
+  customInput.className = 'custom-input';
+  customInput.placeholder = '担当者名を入力...';
+
+  members.forEach(m => {
+    const opt = document.createElement('option');
+    if (m === '──────') { opt.disabled = true; opt.value = ''; opt.textContent = '──────────'; }
+    else { opt.value = m; opt.textContent = m === '' ? '─ 選択 ─' : m; }
+    sel.appendChild(opt);
+  });
+
+  sel.addEventListener('change', () => {
+    const val = sel.value;
+    const c = colorMap[val] || '';
+    sel.className = c ? `sel-${c}` : '';
+
+    // 自由入力モード
+    if (val === '自由入力...') {
+      customInput.style.display = 'block';
+      customInput.focus();
+    } else {
+      customInput.style.display = 'none';
+      customInput.value = '';
+    }
+
+    // 行全体を薄くする（やらないと決めた）
+    const row = sel.closest('tr');
+    if (row) {
+      const mainSel = row.querySelector('select');
+      if (mainSel === sel) {
+        if (val === 'やらないと決めた') {
+          row.classList.add('row-deleted');
+        } else {
+          row.classList.remove('row-deleted');
+        }
+      }
+    }
+    updateProgress();
+  });
+
+  customInput.addEventListener('input', () => {
+    const v = customInput.value.trim();
+    sel.className = v ? 'sel-custom' : '';
+    updateProgress();
+  });
+
+  selects.push(sel);
+  wrap.appendChild(sel);
+  wrap.appendChild(customInput);
+  return wrap;
+}
+
+// 主任共通業務のサポート列にプルダウンを追加
+// ① 主任共通業務に行追加
+function addBlock1Row() {
+  const tbody = document.querySelector('#block1-table tbody');
+  if (!tbody) return;
+  const i = Date.now();
+  const tr = document.createElement('tr');
+  tr.style.background = '#EBF4FF';
+
+  // カテゴリ入力
+  const tdCat = document.createElement('td');
+  tdCat.className = 'td-cat';
+  const inCat = document.createElement('input');
+  inCat.type = 'text'; inCat.placeholder = 'カテゴリ';
+  inCat.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--blue);border-radius:4px;font-size:10px;background:var(--blue-l);color:var(--blue);';
+  tdCat.appendChild(inCat); tr.appendChild(tdCat);
+
+  // 業務内容入力
+  const tdTask = document.createElement('td');
+  const inTask = document.createElement('input');
+  inTask.type = 'text'; inTask.placeholder = '業務内容を入力...';
+  inTask.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--blue);border-radius:4px;font-size:11px;background:var(--blue-l);color:var(--blue);';
+  inTask.addEventListener('input', updateProgress);
+  tdTask.appendChild(inTask); tr.appendChild(tdTask);
+
+  // 頻度
+  const tdFreq = document.createElement('td');
+  tdFreq.className = 'td-freq';
+  const inFreq = document.createElement('input');
+  inFreq.type = 'text'; inFreq.placeholder = '頻度';
+  inFreq.style.cssText = 'width:100%;padding:3px 4px;border:1px solid var(--blue);border-radius:4px;font-size:10px;background:var(--blue-l);color:var(--blue);';
+  tdFreq.appendChild(inFreq); tr.appendChild(tdFreq);
+
+  // 主体（固定テキスト）
+  const tdMain = document.createElement('td');
+  tdMain.style.cssText = 'text-align:center;font-weight:bold;color:var(--blue);font-size:11px;';
+  tdMain.textContent = '大出・石垣'; tr.appendChild(tdMain);
+
+  // サポートプルダウン
+  const tdSup = document.createElement('td');
+  tdSup.className = 'td-select';
+  tdSup.appendChild(makeSelect(`b1-add-sup-${i}`)); tr.appendChild(tdSup);
+
+  // 効率化
+  const tdEff = document.createElement('td');
+  tdEff.className = 'td-eff';
+  const inEff = document.createElement('input');
+  inEff.type = 'text'; inEff.placeholder = '効率化・改善の方向（提案）';
+  inEff.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--blue);border-radius:4px;font-size:11px;background:var(--blue-l);color:var(--blue);';
+  tdEff.appendChild(inEff); tr.appendChild(tdEff);
+
+  // 削除ボタン
+  const tdDel = document.createElement('td');
+  tdDel.style.textAlign = 'center';
+  const delBtn = document.createElement('button');
+  delBtn.textContent = '×';
+  delBtn.style.cssText = 'border:none;background:none;color:#999;cursor:pointer;font-size:14px;';
+  delBtn.onclick = () => { tr.remove(); updateProgress(); };
+  tdDel.appendChild(delBtn); tr.appendChild(tdDel);
+
+  tbody.appendChild(tr);
+  inTask.focus();
+}
+
+// ② 管理職分担業務に行追加
+function addBlock2Row() {
+  const tbody = document.getElementById('block2-body');
+  const i = Date.now();
+  const tr = document.createElement('tr');
+  tr.style.background = '#E0F9FA';
+
+  // カテゴリ
+  const tdCat = document.createElement('td');
+  tdCat.className = 'td-cat';
+  const inCat = document.createElement('input');
+  inCat.type = 'text'; inCat.placeholder = 'カテゴリ';
+  inCat.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--teal);border-radius:4px;font-size:10px;background:var(--teal-l);color:var(--teal);';
+  tdCat.appendChild(inCat); tr.appendChild(tdCat);
+
+  // 業務内容
+  const tdTask = document.createElement('td');
+  tdTask.className = 'td-task';
+  const inTask = document.createElement('input');
+  inTask.type = 'text'; inTask.placeholder = '業務内容を入力...';
+  inTask.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--teal);border-radius:4px;font-size:11px;background:var(--teal-l);color:var(--teal);';
+  inTask.addEventListener('input', updateProgress);
+  tdTask.appendChild(inTask); tr.appendChild(tdTask);
+
+  // 頻度
+  const tdFreq = document.createElement('td');
+  tdFreq.className = 'td-freq';
+  const inFreq = document.createElement('input');
+  inFreq.type = 'text'; inFreq.placeholder = '頻度';
+  inFreq.style.cssText = 'width:100%;padding:3px 4px;border:1px solid var(--teal);border-radius:4px;font-size:10px;background:var(--teal-l);color:var(--teal);';
+  tdFreq.appendChild(inFreq); tr.appendChild(tdFreq);
+
+  // 主担当
+  const tdMain = document.createElement('td');
+  tdMain.className = 'td-select';
+  tdMain.appendChild(makeSelect(`b2-add-main-${i}`)); tr.appendChild(tdMain);
+
+  // サポート
+  const tdSup = document.createElement('td');
+  tdSup.className = 'td-select';
+  tdSup.appendChild(makeSelect(`b2-add-sup-${i}`)); tr.appendChild(tdSup);
+
+  // 効率化
+  const tdEff = document.createElement('td');
+  tdEff.className = 'td-eff';
+  const inEff = document.createElement('input');
+  inEff.type = 'text'; inEff.placeholder = '効率化・改善の方向（提案）';
+  inEff.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--teal);border-radius:4px;font-size:11px;background:var(--teal-l);color:var(--teal);';
+  tdEff.appendChild(inEff); tr.appendChild(tdEff);
+
+  // 将来の分担先
+  const tdFuture = document.createElement('td');
+  tdFuture.className = 'td-select';
+  tdFuture.appendChild(makeSelect(`b2-add-future-${i}`)); tr.appendChild(tdFuture);
+
+  // 削除ボタン
+  const tdDel = document.createElement('td');
+  tdDel.style.textAlign = 'center';
+  const delBtn = document.createElement('button');
+  delBtn.textContent = '×';
+  delBtn.style.cssText = 'border:none;background:none;color:#999;cursor:pointer;font-size:14px;';
+  delBtn.onclick = () => { tr.remove(); updateProgress(); };
+  tdDel.appendChild(delBtn); tr.appendChild(tdDel);
+
+  tbody.appendChild(tr);
+  inTask.focus();
+  updateProgress();
+}
+
+// ③ イレギュラー対応に行追加
+function addBlock3Row() {
+  const tbody = document.getElementById('block3-body');
+  const i = Date.now();
+  const tr = document.createElement('tr');
+  tr.style.background = '#FDE8E4';
+
+  // カテゴリ
+  const tdCat = document.createElement('td');
+  tdCat.className = 'td-cat';
+  tdCat.style.background = 'var(--coral-l)';
+  const inCat = document.createElement('input');
+  inCat.type = 'text'; inCat.placeholder = 'カテゴリ';
+  inCat.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--coral);border-radius:4px;font-size:10px;background:var(--coral-l);color:var(--coral);';
+  tdCat.appendChild(inCat); tr.appendChild(tdCat);
+
+  // 業務内容
+  const tdTask = document.createElement('td');
+  const inTask = document.createElement('input');
+  inTask.type = 'text'; inTask.placeholder = '業務内容を入力...';
+  inTask.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--coral);border-radius:4px;font-size:11px;background:#FDE8E4;color:var(--coral);';
+  inTask.addEventListener('input', updateProgress);
+  tdTask.appendChild(inTask); tr.appendChild(tdTask);
+
+  // 主担当
+  const tdMain = document.createElement('td');
+  tdMain.className = 'td-select';
+  tdMain.appendChild(makeSelect(`b3-add-main-${i}`)); tr.appendChild(tdMain);
+
+  // サポート
+  const tdSup = document.createElement('td');
+  tdSup.className = 'td-select';
+  tdSup.appendChild(makeSelect(`b3-add-sup-${i}`)); tr.appendChild(tdSup);
+
+  // 備考
+  const tdNote = document.createElement('td');
+  tdNote.colSpan = 1;
+  const inNote = document.createElement('input');
+  inNote.type = 'text'; inNote.placeholder = '対応方針・備考';
+  inNote.style.cssText = 'width:100%;padding:3px 5px;border:1px solid var(--coral);border-radius:4px;font-size:11px;background:#FDE8E4;color:var(--coral);';
+  tdNote.appendChild(inNote); tr.appendChild(tdNote);
+
+  // 削除ボタン
+  const tdDel = document.createElement('td');
+  tdDel.style.textAlign = 'center';
+  const delBtn = document.createElement('button');
+  delBtn.textContent = '×';
+  delBtn.style.cssText = 'border:none;background:none;color:#999;cursor:pointer;font-size:14px;';
+  delBtn.onclick = () => { tr.remove(); updateProgress(); };
+  tdDel.appendChild(delBtn); tr.appendChild(tdDel);
+
+  tbody.appendChild(tr);
+  inTask.focus();
+  updateProgress();
+}
+
+function addBlock4Row() {
+  const tbody = document.getElementById('block4-body');
+  const i = tbody.querySelectorAll('tr').length + block4Tasks.length;
+
+  const tr = document.createElement('tr');
+  tr.style.background = '#FAEEDA';
+
+  // 業務名入力欄
+  const tdTask = document.createElement('td');
+  tdTask.style.fontWeight = 'bold';
+  tdTask.style.fontSize = '11px';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = '業務名を入力...';
+  input.style.cssText = 'width:100%;padding:4px 6px;border:1px solid #854F0B;border-radius:4px;font-size:11px;color:#854F0B;background:#FAEEDA;';
+  input.addEventListener('input', updateProgress);
+  tdTask.appendChild(input);
+  tr.appendChild(tdTask);
+
+  // 主担当プルダウン
+  const tdMain = document.createElement('td');
+  tdMain.className = 'td-select';
+  tdMain.appendChild(makeSelect(`b4-add-main-${i}`));
+  tr.appendChild(tdMain);
+
+  // サポートプルダウン
+  const tdSup = document.createElement('td');
+  tdSup.className = 'td-select';
+  tdSup.appendChild(makeSelect(`b4-add-sup-${i}`));
+  tr.appendChild(tdSup);
+
+  // 内容入力欄
+  const tdEff = document.createElement('td');
+  tdEff.className = 'td-eff';
+  tdEff.style.width = '55%';
+  const inputEff = document.createElement('input');
+  inputEff.type = 'text';
+  inputEff.placeholder = '内容・ポイントを入力...';
+  inputEff.style.cssText = 'width:100%;padding:4px 6px;border:1px solid #854F0B;border-radius:4px;font-size:11px;color:#633806;background:#FAEEDA;';
+  tdEff.appendChild(inputEff);
+  tr.appendChild(tdEff);
+
+  // 削除ボタン
+  const tdDel = document.createElement('td');
+  tdDel.style.textAlign = 'center';
+  tdDel.style.width = '5%';
+  const delBtn = document.createElement('button');
+  delBtn.textContent = '×';
+  delBtn.style.cssText = 'border:none;background:none;color:#999;cursor:pointer;font-size:14px;padding:0 4px;';
+  delBtn.onclick = () => { tr.remove(); updateProgress(); };
+  tdDel.appendChild(delBtn);
+  tr.appendChild(tdDel);
+
+  tbody.appendChild(tr);
+  input.focus();
+  updateProgress();
+}
+
+function buildBlock1Selects() {
+  for (let i = 0; i < 4; i++) {
+    const td = document.getElementById(`b1-sup-${i}`);
+    if (td) td.appendChild(makeSelect(`b1-sup-sel-${i}`));
+  }
+}
+
+function buildBlock2() {
+  const tbody = document.getElementById('block2-body');
+  let lastCat = '';
+  block2Tasks.forEach((t, i) => {
+    const tr = document.createElement('tr');
+    if (t.cat !== lastCat) {
+      const td = document.createElement('td');
+      td.className = 'td-cat';
+      td.rowSpan = block2Tasks.filter(x => x.cat === t.cat).length;
+      td.textContent = t.cat;
+      tr.appendChild(td);
+      lastCat = t.cat;
+    }
+    const tdTask = document.createElement('td');
+    tdTask.className = 'td-task';
+    tdTask.innerHTML = t.task + (t.merge ? ' <span class="tag-merge">🔶統合検討</span>' : '');
+    tr.appendChild(tdTask);
+
+    const tdFreq = document.createElement('td');
+    tdFreq.className = 'td-freq';
+    tdFreq.textContent = t.freq;
+    tr.appendChild(tdFreq);
+
+    const tdMain = document.createElement('td');
+    tdMain.className = 'td-select';
+    tdMain.appendChild(makeSelect(`b2-main-${i}`));
+    tr.appendChild(tdMain);
+
+    const tdSup = document.createElement('td');
+    tdSup.className = 'td-select';
+    tdSup.appendChild(makeSelect(`b2-sup-${i}`));
+    tr.appendChild(tdSup);
+
+    const tdEff = document.createElement('td');
+    tdEff.className = 'td-eff';
+    tdEff.textContent = t.eff;
+    tr.appendChild(tdEff);
+
+    const tdFuture = document.createElement('td');
+    tdFuture.className = 'td-select';
+    tdFuture.appendChild(makeSelect(`b2-future-${i}`));
+    tr.appendChild(tdFuture);
+
+    tbody.appendChild(tr);
+  });
+}
+
+function buildBlock3() {
+  const tbody = document.getElementById('block3-body');
+  block3Tasks.forEach((t, i) => {
+    const tr = document.createElement('tr');
+    const tdCat = document.createElement('td');
+    tdCat.className = 'td-cat';
+    tdCat.style.background = 'var(--coral-l)';
+    tdCat.textContent = t.cat;
+    tr.appendChild(tdCat);
+
+    const tdTask = document.createElement('td');
+    tdTask.innerHTML = t.task + ' <span class="tag-irregular">⚡イレギュラー</span>';
+    tr.appendChild(tdTask);
+
+    const tdMain = document.createElement('td');
+    tdMain.className = 'td-select';
+    tdMain.appendChild(makeSelect(`b3-main-${i}`));
+    tr.appendChild(tdMain);
+
+    const tdSup = document.createElement('td');
+    tdSup.className = 'td-select';
+    tdSup.appendChild(makeSelect(`b3-sup-${i}`));
+    tr.appendChild(tdSup);
+
+    const tdNote = document.createElement('td');
+    tdNote.colSpan = 2;
+    tdNote.style.fontSize = '11px';
+    tdNote.style.color = 'var(--coral)';
+    tdNote.textContent = t.note;
+    tr.appendChild(tdNote);
+
+    tbody.appendChild(tr);
+  });
+}
+
+function buildBlock4() {
+  const tbody = document.getElementById('block4-body');
+  block4Tasks.forEach((t, i) => {
+    const tr = document.createElement('tr');
+    const tdTask = document.createElement('td');
+    tdTask.style.fontWeight = 'bold';
+    tdTask.style.fontSize = '11px';
+    tdTask.textContent = t.task;
+    tr.appendChild(tdTask);
+
+    const tdMain = document.createElement('td');
+    tdMain.className = 'td-select';
+    tdMain.appendChild(makeSelect(`b4-main-${i}`));
+    tr.appendChild(tdMain);
+
+    const tdSup = document.createElement('td');
+    tdSup.className = 'td-select';
+    tdSup.appendChild(makeSelect(`b4-sup-${i}`));
+    tr.appendChild(tdSup);
+
+    const tdEff = document.createElement('td');
+    tdEff.className = 'td-eff';
+    tdEff.style.width = '53%';
+    tdEff.textContent = t.eff;
+    tr.appendChild(tdEff);
+
+    // 空のセル（追加行の削除ボタン列と合わせるため）
+    const tdEmpty = document.createElement('td');
+    tdEmpty.style.width = '5%';
+    tr.appendChild(tdEmpty);
+
+    tbody.appendChild(tr);
+  });
+}
+
+const memberDefs = [
+  { name:'大出', cls:'mc-blue', color:'#185FA5', bg:'#E6F1FB' },
+  { name:'石垣', cls:'mc-teal', color:'#0E7490', bg:'#E0F7FA' },
+  { name:'渡部', cls:'mc-green', color:'#0F6E56', bg:'#E1F5EE' },
+  { name:'鈴木', cls:'mc-red', color:'#993556', bg:'#FBEAF0' },
+  { name:'工藤', cls:'mc-forest', color:'#3B6D11', bg:'#EAF3DE' },
+  { name:'杉田', cls:'mc-purple', color:'#534AB7', bg:'#EEEDFE' },
+  { name:'AI・ツール', cls:'mc-purple', color:'#534AB7', bg:'#EEEDFE' },
+];
+
+function getSelectValue(sel) {
+  if (sel.value === '自由入力...') {
+    const inp = sel.parentElement.querySelector('.custom-input');
+    return inp && inp.value.trim() ? inp.value.trim() : null;
+  }
+  if (!sel.value || sel.value === '──────') return null;
+  return sel.value;
+}
+
+function getRowTaskInfo(row) {
+  // block2, block3 はカテゴリ列がある
+  const cells = row.querySelectorAll('td');
+  let cat = '', task = '';
+  if (cells.length >= 3) {
+    // カテゴリ列を探す
+    const catEl = row.querySelector('.td-cat');
+    if (catEl) {
+      cat = catEl.textContent.trim();
+      task = cells[catEl.cellIndex + 1] ? cells[catEl.cellIndex + 1].textContent.trim() : '';
+    } else {
+      // block4は最初のtd
+      task = cells[0].textContent.trim();
+    }
+  }
+  // タグ文字を除去
+  task = task.replace(/[🔶⚡].*$/, '').replace(/統合検討|イレギュラー/g, '').trim();
+  return { cat, task };
+}
+
+function updateProgress() {
+  let filled = 0;
+  let deleted = 0;
+
+  // 担当者別カウント（主担当のみ）
+  const memberCount = {};
+  const memberTasks = {}; // { name: [{cat, task}] }
+  const deletedTasks = [];
+
+  // 全プルダウンを走査。主担当は各行の最初のselect
+  const allRows = document.querySelectorAll('#block2-body tr, #block3-body tr, #block4-body tr');
+
+  allRows.forEach(row => {
+    const rowSelects = row.querySelectorAll('select');
+    if (!rowSelects.length) return;
+    const mainSel = rowSelects[0]; // 最初が主担当
+    const mainVal = getSelectValue(mainSel);
+    const { cat, task } = getRowTaskInfo(row);
+
+    if (mainVal === 'やらないと決めた') {
+      deleted++;
+      deletedTasks.push({ cat, task });
+    } else if (mainVal) {
+      memberCount[mainVal] = (memberCount[mainVal] || 0) + 1;
+      if (!memberTasks[mainVal]) memberTasks[mainVal] = [];
+      memberTasks[mainVal].push({ cat, task });
+    }
+
+    // 全selectの決定済みカウント
+    rowSelects.forEach(s => {
+      const v = getSelectValue(s);
+      if (v) filled++;
+    });
+  });
+
+  document.getElementById('filled-count').textContent = filled;
+  document.getElementById('total-count').textContent = 53;
+  const delEl = document.getElementById('deleted-count');
+  if (delEl) delEl.textContent = deleted > 0 ? `🚫 やらないと決めた ${deleted} 項目` : '';
+
+  // 担当者カウンターカード
+  const counterEl = document.getElementById('member-counters');
+  if (counterEl) {
+    counterEl.innerHTML = '';
+    memberDefs.forEach(m => {
+      const count = memberCount[m.name] || 0;
+      const card = document.createElement('div');
+      card.className = 'member-counter-card';
+      card.style.borderColor = m.color;
+      card.style.background = count > 0 ? m.bg : '#fafafa';
+      card.innerHTML = `<div class="mc-num" style="color:${m.color}">${count}</div><div class="mc-name" style="color:${m.color}">${m.name}</div><div class="mc-sub" style="color:${m.color}">件</div>`;
+      counterEl.appendChild(card);
+    });
+    // 自由入力の担当者も追加
+    Object.keys(memberCount).forEach(name => {
+      if (!memberDefs.find(m => m.name === name)) {
+        const count = memberCount[name];
+        const card = document.createElement('div');
+        card.className = 'member-counter-card';
+        card.style.borderColor = '#854F0B';
+        card.style.background = '#FAEEDA';
+        card.innerHTML = `<div class="mc-num" style="color:#854F0B">${count}</div><div class="mc-name" style="color:#854F0B">${name}</div><div class="mc-sub" style="color:#854F0B">件</div>`;
+        counterEl.appendChild(card);
+      }
+    });
+    if (Object.keys(memberCount).length === 0) {
+      counterEl.innerHTML = '<span style="font-size:11px;color:#bbb;">プルダウンで主担当を選ぶと自動で集計されます</span>';
+    }
+  }
+
+  // まとめ表：担当者別
+  const summaryEl = document.getElementById('summary-by-member');
+  if (summaryEl) {
+    summaryEl.innerHTML = '';
+    const allNames = [...new Set([...memberDefs.map(m=>m.name), ...Object.keys(memberTasks)])].filter(n => memberTasks[n] && memberTasks[n].length > 0);
+    if (allNames.length === 0) {
+      summaryEl.innerHTML = '<span style="font-size:12px;color:#bbb;">まだ主担当が選ばれていません</span>';
+    } else {
+      allNames.forEach(name => {
+        const tasks = memberTasks[name];
+        if (!tasks || !tasks.length) return;
+        const mdef = memberDefs.find(m => m.name === name) || { color:'#854F0B', bg:'#FAEEDA' };
+        const block = document.createElement('div');
+        block.className = 'summary-person-block';
+        block.style.borderColor = mdef.color;
+        block.innerHTML = `<div class="summary-person-header" style="background:${mdef.bg};color:${mdef.color};">${name}　<span style="font-weight:normal;font-size:11px;">主担当 ${tasks.length} 件</span></div>`;
+        const list = document.createElement('div');
+        list.className = 'summary-task-list';
+        tasks.forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'summary-task-item';
+          item.innerHTML = `<span class="summary-task-cat">${t.cat}</span><span>${t.task}</span>`;
+          list.appendChild(item);
+        });
+        block.appendChild(list);
+        summaryEl.appendChild(block);
+      });
+    }
+  }
+
+  // まとめ表：やらないと決めたこと
+  const deletedEl = document.getElementById('summary-deleted');
+  const deletedEmptyEl = document.getElementById('deleted-empty-msg');
+  if (deletedEl) {
+    const existingItems = deletedEl.querySelectorAll('.deleted-item');
+    existingItems.forEach(el => el.remove());
+    if (deletedEmptyEl) deletedEmptyEl.style.display = deletedTasks.length ? 'none' : 'inline';
+    deletedTasks.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'deleted-item';
+      span.textContent = (t.cat ? t.cat + '｜' : '') + t.task;
+      deletedEl.appendChild(span);
+    });
+  }
+}
+
+buildBlock1Selects();
+buildBlock2();
+buildBlock3();
+buildBlock4();
+updateProgress();
+</script>
+</body>
+</html>
