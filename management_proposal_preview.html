@@ -112,6 +112,30 @@
   .custom-wrap { position: relative; }
   .custom-input { display: none; width: 100%; margin-top: 3px; padding: 3px 5px; border: 1px solid var(--amber); border-radius: 4px; font-size: 10px; color: var(--amber); background: var(--amber-l); }
   .custom-input::placeholder { color: #c8973a; }
+
+  /* インライン編集 */
+  .editable-cell { position: relative; cursor: text; }
+  .editable-cell:hover { background: rgba(255,255,255,0.6); }
+  .editable-cell:hover::after {
+    content: '✎';
+    position: absolute; right: 3px; top: 50%; transform: translateY(-50%);
+    font-size: 10px; color: #aaa; pointer-events: none;
+  }
+  .editable-cell.editing { padding: 0 !important; }
+  .editable-cell input, .editable-cell textarea {
+    width: 100%; box-sizing: border-box;
+    border: 2px solid var(--green); border-radius: 3px;
+    padding: 4px 6px; font-size: 11px; font-family: inherit;
+    background: #fffde7; color: var(--dark);
+    resize: none; outline: none;
+  }
+  .row-actions { display: flex; gap: 4px; align-items: center; justify-content: center; }
+  .btn-del-row {
+    border: none; background: none; color: #ccc;
+    cursor: pointer; font-size: 14px; padding: 0 3px; line-height: 1;
+    transition: color .15s;
+  }
+  .btn-del-row:hover { color: var(--red); }
   .member-counter-card { border-radius:6px;padding:8px 12px;border:1px solid;text-align:center;min-width:90px; }
   .mc-num { font-size:22px;font-weight:bold;margin-bottom:2px; }
   .mc-name { font-size:11px;font-weight:bold; }
@@ -207,12 +231,12 @@
 
   <!-- Members -->
   <div class="member-grid">
-    <div class="member-card mc-blue"><div class="member-name">大出（主任）</div><div class="member-role">品質・評価・現場判断</div></div>
-    <div class="member-card mc-teal"><div class="member-name">石垣（主任）</div><div class="member-role">数値・量的管理・スタッフ対応</div></div>
-    <div class="member-card mc-green"><div class="member-name">渡部（副主任）</div><div class="member-role">設計・仕組み化</div></div>
-    <div class="member-card mc-red"><div class="member-name">鈴木（副主任）</div><div class="member-role">ルール遵守・確実実行</div></div>
-    <div class="member-card mc-forest"><div class="member-name">工藤（スタッフ）</div><div class="member-role">人事・対外系サポート</div></div>
-    <div class="member-card mc-purple"><div class="member-name">杉田（リーダー）</div><div class="member-role">現場実行</div></div>
+    <div class="member-card mc-blue"><div class="member-name">大出（主任）</div></div>
+    <div class="member-card mc-teal"><div class="member-name">石垣（主任）</div></div>
+    <div class="member-card mc-green"><div class="member-name">渡部（副主任）</div></div>
+    <div class="member-card mc-red"><div class="member-name">鈴木（副主任）</div></div>
+    <div class="member-card mc-forest"><div class="member-name">工藤（スタッフ）</div></div>
+    <div class="member-card mc-purple"><div class="member-name">杉田（リーダー）</div></div>
   </div>
 
   <!-- 進捗サマリー -->
@@ -298,7 +322,7 @@
       </tr></thead>
       <tbody id="block3-body"></tbody>
     </table>
-    <div class="note-box nb-coral">⚡ イレギュラー対応の主担当・サポートもプルダウンで決めていきましょう。対応する人を事前に明確にしておくことで、発生時の混乱を減らせます。</div>
+    <div class="note-box nb-coral">⚡ イレギュラー対応は管理職全員で対応するのが大前提。ただ「誰もが動ける」状態は時に「誰も動かない」になりやすい。発生時にスムーズに動けるよう、主担当・役割の目安をあらかじめ話し合っておきたい。担当外だからやらない、ということではありません。</div>
     <button onclick="addBlock3Row()" style="margin-top:10px;padding:7px 16px;font-size:12px;border:1px solid var(--coral);border-radius:6px;background:var(--coral-l);color:var(--coral);cursor:pointer;font-weight:bold;">＋ イレギュラー対応を追加する</button>
   </div>
 
@@ -749,6 +773,25 @@ function buildBlock1Selects() {
     const td = document.getElementById(`b1-sup-${i}`);
     if (td) td.appendChild(makeSelect(`b1-sup-sel-${i}`));
   }
+  // block1の既存行に編集・削除を付与
+  const rows = document.querySelectorAll('#block1-table tbody tr');
+  rows.forEach(tr => {
+    const cells = tr.querySelectorAll('td');
+    cells.forEach((td, idx) => {
+      // カテゴリ(0)・業務内容(1)・頻度(2)・効率化(5) を編集可能に
+      if ([0,1,2,5].includes(idx)) makeEditable(td, idx === 5);
+    });
+    // ヘッダーに削除列を追加（1度だけ）
+    addDeleteBtn(tr);
+  });
+  // block1テーブルのtheadに×列を追加
+  const thead = document.querySelector('#block1-table thead tr');
+  if (thead) {
+    const th = document.createElement('th');
+    th.className = 'th-blue';
+    th.style.width = '32px';
+    thead.appendChild(th);
+  }
 }
 
 function buildBlock2() {
@@ -794,8 +837,21 @@ function buildBlock2() {
     tdFuture.appendChild(makeSelect(`b2-future-${i}`));
     tr.appendChild(tdFuture);
 
+    // 編集可能: カテゴリ(rowSpanで共有)・タスク・頻度・効率化
+    makeEditable(tdTask, false);
+    makeEditable(tdFreq, false);
+    makeEditable(tdEff, true);
+    addDeleteBtn(tr);
     tbody.appendChild(tr);
   });
+  // block2 theadに×列
+  const b2thead = document.querySelector('#block2-body').closest('table').querySelector('thead tr');
+  if (b2thead && !b2thead.querySelector('.del-th')) {
+    const th = document.createElement('th');
+    th.className = 'th-teal del-th';
+    th.style.width = '32px';
+    b2thead.appendChild(th);
+  }
 }
 
 function buildBlock3() {
@@ -829,8 +885,20 @@ function buildBlock3() {
     tdNote.textContent = t.note;
     tr.appendChild(tdNote);
 
+    // 編集可能: カテゴリ・タスク・備考
+    makeEditable(tdTask, false);
+    makeEditable(tdNote, true);
+    addDeleteBtn(tr);
     tbody.appendChild(tr);
   });
+  // block3 theadに×列
+  const b3thead = document.querySelector('#block3-body').closest('table').querySelector('thead tr');
+  if (b3thead && !b3thead.querySelector('.del-th3')) {
+    const th = document.createElement('th');
+    th.className = 'th-coral del-th3';
+    th.style.width = '32px';
+    b3thead.appendChild(th);
+  }
 }
 
 function buildBlock4() {
@@ -859,13 +927,64 @@ function buildBlock4() {
     tdEff.textContent = t.eff;
     tr.appendChild(tdEff);
 
-    // 空のセル（追加行の削除ボタン列と合わせるため）
-    const tdEmpty = document.createElement('td');
-    tdEmpty.style.width = '5%';
-    tr.appendChild(tdEmpty);
-
+    makeEditable(tdTask, false);
+    makeEditable(tdEff, true);
+    addDeleteBtn(tr);
     tbody.appendChild(tr);
   });
+  // block4 theadに×列
+  const b4table = document.querySelector('#block4-body').closest('table');
+  if (b4table) {
+    const b4thead = b4table.querySelector('thead tr');
+    if (b4thead && !b4thead.querySelector('.del-th4')) {
+      const th = document.createElement('th');
+      th.className = 'th-green del-th4';
+      th.style.width = '32px';
+      b4thead.appendChild(th);
+    }
+  }
+}
+
+// ======= インライン編集ユーティリティ =======
+function makeEditable(td, multiline) {
+  td.classList.add('editable-cell');
+  td.addEventListener('click', function(e) {
+    if (td.classList.contains('editing')) return;
+    td.classList.add('editing');
+    const original = td.textContent.trim();
+    const el = document.createElement(multiline ? 'textarea' : 'input');
+    el.value = original;
+    if (multiline) { el.rows = 3; }
+    td.textContent = '';
+    td.appendChild(el);
+    el.focus();
+    el.select();
+    function commit() {
+      td.classList.remove('editing');
+      const val = el.value.trim() || original;
+      td.textContent = val;
+      makeEditable(td, multiline);
+      updateProgress();
+    }
+    el.addEventListener('blur', commit);
+    el.addEventListener('keydown', function(e) {
+      if (!multiline && e.key === 'Enter') { e.preventDefault(); commit(); }
+      if (e.key === 'Escape') { el.value = original; commit(); }
+    });
+    e.stopPropagation();
+  });
+}
+
+function addDeleteBtn(tr) {
+  const td = document.createElement('td');
+  td.style.cssText = 'text-align:center;width:32px;padding:2px;';
+  const btn = document.createElement('button');
+  btn.className = 'btn-del-row';
+  btn.textContent = '×';
+  btn.title = 'この行を削除';
+  btn.onclick = () => { tr.remove(); updateProgress(); };
+  td.appendChild(btn);
+  tr.appendChild(td);
 }
 
 const memberDefs = [
